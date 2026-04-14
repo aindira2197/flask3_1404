@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Fitness</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 70%;
+            margin: auto;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 10px;
+            text-align: center;
+        }
+        .rest {
+            background-color: lightgray;
+        }
+    </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Fitness haftalik jadvali</h2>
+
+<table>
+    <tr>
+        <th>Kun</th>
+        <th>Mashq</th>
+        <th>Davomiyligi (min)</th>
+        <th>Kaloriya</th>
+    </tr>
+
+    {% for w in workouts %}
+    <tr class="{{ 'rest' if w.exercise == 'Dam olish' else '' }}">
+        <td>{{ w.day }}</td>
+        <td>{{ w.exercise }}</td>
+        <td>{{ w.duration }}</td>
+        <td>{{ w.calories }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<h3 style="text-align:center;">
+    Haftalik jami kaloriya: {{ total_calories }}
+</h3>
+
+<h3 style="text-align:center;">
+    Maqsadgacha qolgan: {{ remaining }}
+</h3>
+
+</body>
+</html>
